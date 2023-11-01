@@ -45,7 +45,6 @@ n_epochs = 10
 """
 
 dataset = load_dataset("scikit-learn/imdb", split="train")
-print(dataset)
 
 """# Pre-processing / Tokenization
 
@@ -110,7 +109,6 @@ tok_dataset = tok_dataset.train_test_split(test_size=0.2)
 document_train_set = tok_dataset["train"]
 document_valid_set = tok_dataset["test"]
 
-print(document_train_set[0])
 
 def extract_words_contexts(list_of_ids_of_txt_doc, R=R):
   w_ids = list_of_ids_of_txt_doc
@@ -164,8 +162,6 @@ class set(Dataset):
 train_set = set(flatten_document_train_set)
 valid_set = set(flatten_document_valid_set)
 
-print(len(train_set))
-print(train_set[0])
 
 def collate_fn(batch, R=R, K=K):
   dict = {}
@@ -265,7 +261,10 @@ def training(model, batch_size, n_epochs, lr=5e-5):
         train_loss = 0
         epoch_train_acc = 0
         total_size = 0
+        batch_number = 0
         for batch in train_dataloader:
+            batch_number += 1
+            batch_progress = trange(64, desc=f"Batch {batch_number}/64", position=0, leave=True)
             batch = {k: v.to(DEVICE) for k, v in batch.items()}
             word_id, positive_context_ids, negative_context_ids = (
                 batch["word_id"],
@@ -287,6 +286,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
             acc_negative = (output_negative < 0.5)
             epoch_train_acc += acc_positive.sum().item() + acc_negative.sum().item()
             total_size += acc_positive.shape[0] + acc_negative.shape[0]
+            batch_progress.close()
         list_train_acc.append(epoch_train_acc / total_size)
         list_train_loss.append(train_loss / len(train_dataloader))
 
