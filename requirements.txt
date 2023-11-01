@@ -1,0 +1,6 @@
+numpy
+torch
+tabulate
+datasets
+tqdm
+datasests
