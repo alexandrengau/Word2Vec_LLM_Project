@@ -261,10 +261,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
         train_loss = 0
         epoch_train_acc = 0
         total_size = 0
-        batch_number = 0
         for batch in train_dataloader:
-            batch_number += 1
-            batch_progress = trange(64, desc=f"Batch {batch_number}/64", position=0, leave=True)
             batch = {k: v.to(DEVICE) for k, v in batch.items()}
             word_id, positive_context_ids, negative_context_ids = (
                 batch["word_id"],
@@ -286,7 +283,6 @@ def training(model, batch_size, n_epochs, lr=5e-5):
             acc_negative = (output_negative < 0.5)
             epoch_train_acc += acc_positive.sum().item() + acc_negative.sum().item()
             total_size += acc_positive.shape[0] + acc_negative.shape[0]
-            batch_progress.close()
         list_train_acc.append(epoch_train_acc / total_size)
         list_train_loss.append(train_loss / len(train_dataloader))
 
