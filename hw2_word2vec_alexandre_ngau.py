@@ -213,7 +213,7 @@ def validation(model, valid_dataloader):
     loss_total = 0
     criterion = nn.BCELoss(reduction = 'none')
     model.eval()
-    model.to(DEVICE)
+    # model.to(DEVICE)
     with torch.no_grad():
         for batch in tqdm(valid_dataloader):
             batch = {k: v.to(DEVICE) for k, v in batch.items()}
@@ -241,10 +241,10 @@ def training(model, batch_size, n_epochs, lr=5e-5):
     )
 
     train_dataloader = DataLoader(
-        train_set, batch_size=batch_size, collate_fn=collate_fn, pin_memory=True
+        train_set, batch_size=batch_size, collate_fn=collate_fn
         )
     valid_dataloader = DataLoader(
-        valid_set, batch_size=batch_size, collate_fn=collate_fn, pin_memory=True
+        valid_set, batch_size=batch_size, collate_fn=collate_fn
         )
 
     list_val_acc = []
@@ -257,7 +257,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
 
         # Set model to training mode
         model.train()
-        model = model.to(DEVICE)
+        # model = model.to(DEVICE)
 
         # Tracking variables
         train_loss = 0
