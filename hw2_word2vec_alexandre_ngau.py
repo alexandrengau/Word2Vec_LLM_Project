@@ -148,7 +148,7 @@ from torch.utils.data import Dataset
 
 class set(Dataset):
     def __init__(self, flatten_document_set):
-        self.word = flatten_document_train_set[0]
+        self.word = flatten_document_set[0]
         self.positive_context = flatten_document_set[1]
 
     def __len__(self):
