@@ -227,7 +227,8 @@ def validation(model, valid_dataloader):
             loss_total += loss.detach().cpu().item()
             acc_positive = (pred_pos.squeeze() > 0.5)
             acc_negative = (pred_neg.squeeze() < 0.5)
-            acc_total = acc_positive.sum().item() + acc_negative.sum().item()
+            acc_total += acc_positive.sum().item()
+            acc_total += acc_negative.sum().item()
             total_size += acc_positive.shape[0] + acc_negative.shape[0]
     model.train()
     return loss_total / len(valid_dataloader), acc_total / total_size
@@ -282,7 +283,8 @@ def training(model, batch_size, n_epochs, lr=5e-5):
             train_loss += loss.detach().cpu().item()
             acc_positive = (output_positive.squeeze() > 0.5)
             acc_negative = (output_negative.squeeze() < 0.5)
-            epoch_train_acc += acc_positive.sum().item() + acc_negative.sum().item()
+            epoch_train_acc += acc_positive.sum().item()
+            epoch_train_acc += acc_negative.sum().item()
             total_size += acc_positive.shape[0] + acc_negative.shape[0]
         list_train_acc.append(epoch_train_acc / total_size)
         list_train_loss.append(train_loss / len(train_dataloader))
@@ -301,7 +303,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
         )
     return list_train_loss, list_train_acc, list_val_loss, list_val_acc
 
-embedding_dimension = 150
+embedding_dimension = 100
 vocab_size = len(tokenizer.get_vocab())
 model = Word2Vec(vocab_size, embedding_dimension)
 model = model.to(DEVICE)
