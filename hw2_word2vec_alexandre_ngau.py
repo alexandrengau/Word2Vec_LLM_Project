@@ -202,9 +202,8 @@ class Word2Vec(nn.Module):
 
   def forward(self, target_word_ids, context_word_ids):
     embedded_target = self.embedding_words(target_word_ids)
-    print(embedded_target.shape)
     embedded_context = self.embedding_context(context_word_ids)
-    print(embedded_context.shape)
+    embedded_target = embedded_target.repeat(1,embedded_context.shape[1],1)
 
     score = torch.sigmoid(torch.matmul(embedded_context, embedded_target))
     return score
