@@ -89,7 +89,7 @@ You should:
 
 """
 
-n_samples = 1000  # the number of training example
+n_samples = 128  # the number of training example
 
 # We first shuffle the data !
 dataset = dataset.shuffle()
@@ -229,7 +229,8 @@ def validation(model, valid_dataloader):
             acc_negative = (pred_neg.squeeze() < 0.5)
             acc_total += acc_positive.sum().item()
             acc_total += acc_negative.sum().item()
-            total_size += acc_positive.shape[0] + acc_negative.shape[0]
+            total_size += acc_positive.shape[0]
+            total_size += acc_negative.shape[0]
     model.train()
     return loss_total / len(valid_dataloader), acc_total / total_size
 
