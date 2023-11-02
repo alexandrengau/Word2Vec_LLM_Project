@@ -26,6 +26,7 @@ from tabulate import tabulate
 from datasets import load_dataset
 
 from tqdm import trange
+from tqdm.notebook import tqdm
 from transformers import BertTokenizer
 
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -213,7 +214,7 @@ def validation(model, valid_dataloader):
     criterion = nn.BCELoss(reduction = 'none')
     model.eval()
     with torch.no_grad():
-        for batch in valid_dataloader:
+        for batch in tqdm(valid_dataloader):
             batch = {k: v.to(DEVICE) for k, v in batch.items()}
             word_id = batch["word_id"]
             positive_context_ids = batch["positive_context_ids"]
@@ -261,7 +262,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
         train_loss = 0
         epoch_train_acc = 0
         total_size = 0
-        for batch in train_dataloader:
+        for batch in tqdm(train_dataloader):
             batch = {k: v.to(DEVICE) for k, v in batch.items()}
             word_id, positive_context_ids, negative_context_ids = (
                 batch["word_id"],
