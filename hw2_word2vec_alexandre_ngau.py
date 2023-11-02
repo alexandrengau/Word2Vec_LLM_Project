@@ -36,7 +36,7 @@ print(DEVICE)
 
 R = 4
 K = 6
-batch_size = 64
+batch_size = 256
 n_epochs = 10
 
 """First cells will be the same than the ones of the lab on text convolution.
@@ -257,7 +257,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
 
         # Set model to training mode
         model.train()
-        model.to(DEVICE)
+        model = model.to(DEVICE)
 
         # Tracking variables
         train_loss = 0
@@ -305,8 +305,9 @@ def training(model, batch_size, n_epochs, lr=5e-5):
 embedding_dimension = 150
 vocab_size = len(tokenizer.get_vocab())
 model = Word2Vec(vocab_size, embedding_dimension)
+model = model.to(DEVICE)
 
-training(model, batch_size, n_epochs, lr=5e-5)
+training(model, batch_size, n_epochs)
 
 def save_model(model, file_path, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=nb_epochs):
     file_name = f"model_dim-{dimension}_radius-{radius}_ratio-{ratio}-batch-{batch}-epoch-{epoch}.ckpt"
