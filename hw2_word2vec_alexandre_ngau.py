@@ -36,7 +36,7 @@ print(DEVICE)
 
 R = 4
 K = 6
-batch_size = 32
+batch_size = 256
 n_epochs = 10
 
 """First cells will be the same than the ones of the lab on text convolution.
@@ -213,7 +213,7 @@ def validation(model, valid_dataloader):
     loss_total = 0
     criterion = nn.BCELoss(reduction = 'none')
     model.eval()
-    model = model.to(DEVICE)
+    # model = model.to(DEVICE)
     with torch.no_grad():
         for batch in tqdm(valid_dataloader):
             # batch = {k: v.to(DEVICE) for k, v in batch.items()}
@@ -257,7 +257,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
 
         # Set model to training mode
         model.train()
-        model = model.to(DEVICE)
+        # model = model.to(DEVICE)
 
         # Tracking variables
         train_loss = 0
@@ -302,7 +302,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
         )
     return list_train_loss, list_train_acc, list_val_loss, list_val_acc
 
-embedding_dimension = 32
+embedding_dimension = 150
 vocab_size = len(tokenizer.get_vocab())
 model = Word2Vec(vocab_size, embedding_dimension)
 model = model.to(DEVICE)
