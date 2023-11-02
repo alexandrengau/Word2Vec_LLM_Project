@@ -312,10 +312,10 @@ model = model.to(DEVICE)
 
 training(model, batch_size, n_epochs)
 
-def save_model(model, file_path, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=nb_epochs):
+def save_model(model, file_path, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=n_epochs):
     file_name = f"model_sample-{n_samples}_dim-{dimension}_radius-{radius}_ratio-{ratio}-batch-{batch}-epoch-{epoch}.ckpt"
     torch.save(model.state_dict(), file_path + file_name)
 
 PATH = '~/llm_hw2/model_data/'
-save_model(model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=nb_epochs)
+save_model(model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=n_epochs)
 
