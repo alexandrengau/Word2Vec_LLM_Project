@@ -308,10 +308,10 @@ model = Word2Vec(vocab_size, embedding_dimension)
 
 training(model, batch_size, n_epochs, lr=5e-5)
 
-"""def save_model(model, file_path, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=nb_epochs):
+def save_model(model, file_path, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=nb_epochs):
     file_name = f"model_dim-{dimension}_radius-{radius}_ratio-{ratio}-batch-{batch}-epoch-{epoch}.ckpt"
     torch.save(model.state_dict(), file_path + file_name)
 
-PATH = '/content/model_data/'
+PATH = '~/llm_hw2/model_data/'
 save_model(model, file_path=PATH, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=nb_epochs)
-"""
+
