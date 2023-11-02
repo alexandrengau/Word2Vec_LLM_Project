@@ -286,7 +286,8 @@ def training(model, batch_size, n_epochs, lr=5e-5):
             acc_negative = (output_negative.squeeze() < 0.5)
             epoch_train_acc += acc_positive.sum().item()
             epoch_train_acc += acc_negative.sum().item()
-            total_size += acc_positive.shape[0] + acc_negative.shape[0]
+            total_size += acc_positive.shape[0]
+            total_size += acc_negative.shape[0]
         list_train_acc.append(epoch_train_acc / total_size)
         list_train_loss.append(train_loss / len(train_dataloader))
 
