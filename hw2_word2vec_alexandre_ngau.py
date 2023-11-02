@@ -316,6 +316,6 @@ def save_model(model, file_path, n_samples=n_samples, dimension=embedding_dimens
     file_name = f"model_sample-{n_samples}_dim-{dimension}_radius-{radius}_ratio-{ratio}-batch-{batch}-epoch-{epoch}.ckpt"
     torch.save(model.state_dict(), file_path + file_name)
 
-PATH = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data'
+PATH = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/'
 save_model(model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=n_epochs)
 
