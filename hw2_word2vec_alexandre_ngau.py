@@ -283,6 +283,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
             loss.backward()
             optimizer.step()
             train_loss += loss.detach().cpu().item()
+            print(f"loss detach = {train_loss}")
             acc_positive = (output_positive.squeeze() > 0.5)
             acc_negative = (output_negative.squeeze() < 0.5)
             epoch_train_acc += acc_positive.int().sum().item()
