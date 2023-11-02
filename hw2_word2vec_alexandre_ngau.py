@@ -89,7 +89,7 @@ You should:
 
 """
 
-n_samples = 2500  # the number of training example
+n_samples = 1000  # the number of training example
 
 # We first shuffle the data !
 dataset = dataset.shuffle()
@@ -309,10 +309,10 @@ model = model.to(DEVICE)
 
 training(model, batch_size, n_epochs)
 
-def save_model(model, file_path, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=nb_epochs):
-    file_name = f"model_dim-{dimension}_radius-{radius}_ratio-{ratio}-batch-{batch}-epoch-{epoch}.ckpt"
+def save_model(model, file_path, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=nb_epochs):
+    file_name = f"model_sample-{n_samples}_dim-{dimension}_radius-{radius}_ratio-{ratio}-batch-{batch}-epoch-{epoch}.ckpt"
     torch.save(model.state_dict(), file_path + file_name)
 
 PATH = '~/llm_hw2/model_data/'
-save_model(model, file_path=PATH, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=nb_epochs)
+save_model(model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=nb_epochs)
 
