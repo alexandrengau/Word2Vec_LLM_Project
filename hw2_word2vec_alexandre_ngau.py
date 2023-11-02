@@ -226,14 +226,11 @@ def validation(model, valid_dataloader):
             loss = torch.mean(loss_positive + loss_negative)
             loss_total += loss.detach().cpu().item()
             acc_positive = (pred_pos.squeeze() > 0.5)
-            print(acc_positive)
             acc_negative = (pred_neg.squeeze() < 0.5)
-            acc_total += acc_positive.sum().item()
-            acc_total += acc_negative.sum().item()
-            print(acc_total)
+            acc_total += acc_positive.int().sum().item()
+            acc_total += acc_negative.int().sum().item()
             total_size += acc_positive.shape[0]
             total_size += acc_negative.shape[0]
-            print(acc_positive.shape[0], total_size)
     model.train()
     return loss_total / len(valid_dataloader), acc_total / total_size
 
