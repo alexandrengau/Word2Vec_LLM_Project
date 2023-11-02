@@ -204,7 +204,7 @@ class Word2Vec(nn.Module):
     embedded_target = self.embedding_words(target_word_ids)
     embedded_context = self.embedding_context(context_word_ids)
 
-    score = torch.sigmoid(torch.sum(embedded_context*embedded_target, dim=2))
+    score = torch.sigmoid(torch.matmul(embedded_context, embedded_target))
     return score
 
 def validation(model, valid_dataloader):
