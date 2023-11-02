@@ -26,7 +26,7 @@ from tabulate import tabulate
 from datasets import load_dataset
 
 from tqdm import trange
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 from transformers import BertTokenizer
 
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
