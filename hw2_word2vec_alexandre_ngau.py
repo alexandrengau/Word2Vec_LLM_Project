@@ -36,7 +36,7 @@ print(DEVICE)
 
 R = 4
 K = 6
-batch_size = 16
+batch_size = 64
 n_epochs = 10
 
 """First cells will be the same than the ones of the lab on text convolution.
@@ -89,7 +89,7 @@ You should:
 
 """
 
-n_samples = 50  # the number of training example
+n_samples = 5000  # the number of training example
 
 # We first shuffle the data !
 dataset = dataset.shuffle()
@@ -278,12 +278,10 @@ def training(model, batch_size, n_epochs, lr=5e-5):
             # Backward pass
             loss_positive = torch.mean(criterion(output_positive, torch.ones(output_positive.shape, device=DEVICE)), dim=1)
             loss_negative = torch.mean(criterion(output_negative, torch.zeros(output_negative.shape, device=DEVICE)), dim=1)
-            print(f"loss = {torch.mean(loss_positive+loss_negative)}")
             loss = torch.mean(loss_positive + loss_negative)
             loss.backward()
             optimizer.step()
             train_loss += loss.detach().cpu().item()
-            print(f"loss detach = {train_loss}")
             acc_positive = (output_positive.squeeze() > 0.5)
             acc_negative = (output_negative.squeeze() < 0.5)
             epoch_train_acc += acc_positive.int().sum().item()
