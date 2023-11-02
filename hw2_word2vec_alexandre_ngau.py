@@ -34,9 +34,9 @@ print(DEVICE)
 
 # Global variables
 
-R = 3
-K = 3
-batch_size = 32
+R = 4
+K = 6
+batch_size = 512
 n_epochs = 10
 
 """First cells will be the same than the ones of the lab on text convolution.
@@ -89,7 +89,7 @@ You should:
 
 """
 
-n_samples = 50  # the number of training example
+n_samples = 5000  # the number of training example
 
 # We first shuffle the data !
 dataset = dataset.shuffle()
@@ -293,13 +293,13 @@ def training(model, batch_size, n_epochs, lr=5e-5):
 
         l, a = validation(model, valid_dataloader)
         list_val_loss.append(l)
-        list_val_acc.append(a * 100)
+        list_val_acc.append(a)
         print(
             e,
             "\n\t - Train loss: {:.4f}".format(list_train_loss[-1]),
             "Train acc: {:.4f}".format(list_train_acc[-1]),
             "Val loss: {:.4f}".format(l),
-            "Val acc:{:.4f}".format(a * 100),
+            "Val acc:{:.4f}".format(a),
         )
     return list_train_loss, list_train_acc, list_val_loss, list_val_acc
 
