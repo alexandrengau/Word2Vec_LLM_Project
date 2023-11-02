@@ -276,7 +276,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
             # Backward pass
             loss_positive = torch.mean(criterion(output_positive, torch.ones(output_positive.shape, device=DEVICE)), dim=1)
             loss_negative = torch.mean(criterion(output_negative, torch.zeros(output_negative.shape, device=DEVICE)), dim=1)
-            loss = torch.mean(loss_positive + loss_negative)
+            loss = loss_positive + loss_negative
             loss.backward()
             optimizer.step()
             train_loss += loss.detach().cpu().item()
