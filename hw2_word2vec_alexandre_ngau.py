@@ -243,11 +243,9 @@ def training(model, batch_size, n_epochs, lr=5e-5):
     train_dataloader = DataLoader(
         train_set, batch_size=batch_size, collate_fn=collate_fn, pin_memory=True
         )
-    train_dataloader.to(DEVICE)
     valid_dataloader = DataLoader(
         valid_set, batch_size=batch_size, collate_fn=collate_fn, pin_memory=True
         )
-    valid_dataloader.to(DEVICE)
 
     list_val_acc = []
     list_train_acc = []
