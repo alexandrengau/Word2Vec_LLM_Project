@@ -223,10 +223,10 @@ def validation(model, valid_dataloader):
             pred_neg = model(word_id.unsqueeze(1), negative_context_ids)
             loss_positive = torch.mean(criterion(pred_pos, torch.ones(pred_pos.shape, device=DEVICE)), dim=1)
             loss_negative = torch.mean(criterion(pred_neg, torch.zeros(pred_neg.shape, device=DEVICE)), dim=1)
-            loss = torch.mean(loss_positive + loss_negative)
-            loss_total += loss
-            acc_positive = (pred_pos > 0.5)
-            acc_negative = (pred_neg < 0.5)
+            loss = loss_positive + loss_negative
+            loss_total += loss.detach().cpu().item()
+            acc_positive = (pred_pos.squeeze() > 0.5)
+            acc_negative = (pred_neg.squeeze() < 0.5)
             acc_total = acc_positive.sum().item() + acc_negative.sum().item()
             total_size += acc_positive.shape[0] + acc_negative.shape[0]
     model.train()
@@ -279,9 +279,9 @@ def training(model, batch_size, n_epochs, lr=5e-5):
             loss = torch.mean(loss_positive + loss_negative)
             loss.backward()
             optimizer.step()
-            train_loss += loss #.detach().cpu().item()
-            acc_positive = (output_positive > 0.5)
-            acc_negative = (output_negative < 0.5)
+            train_loss += loss.detach().cpu().item()
+            acc_positive = (output_positive.squeeze() > 0.5)
+            acc_negative = (output_negative.squeeze() < 0.5)
             epoch_train_acc += acc_positive.sum().item() + acc_negative.sum().item()
             total_size += acc_positive.shape[0] + acc_negative.shape[0]
         list_train_acc.append(epoch_train_acc / total_size)
