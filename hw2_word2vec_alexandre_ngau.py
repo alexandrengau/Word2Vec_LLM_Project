@@ -34,9 +34,9 @@ print(DEVICE)
 
 # Global variables
 
-R = 4
-K = 6
-batch_size = 256
+R = 3
+K = 3
+batch_size = 32
 n_epochs = 10
 
 """First cells will be the same than the ones of the lab on text convolution.
@@ -233,7 +233,7 @@ def validation(model, valid_dataloader):
     model.train()
     return loss_total / len(valid_dataloader), acc_total / total_size
 
-def training(model, batch_size, n_epochs, lr=5e-5):
+def training(model, batch_size, n_epochs, lr=5e-2):
     optimizer = torch.optim.AdamW(
         model.parameters(),
         lr=lr,
@@ -302,7 +302,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
         )
     return list_train_loss, list_train_acc, list_val_loss, list_val_acc
 
-embedding_dimension = 150
+embedding_dimension = 100
 vocab_size = len(tokenizer.get_vocab())
 model = Word2Vec(vocab_size, embedding_dimension)
 model = model.to(DEVICE)
