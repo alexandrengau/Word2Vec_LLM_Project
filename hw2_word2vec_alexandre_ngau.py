@@ -229,8 +229,8 @@ def validation(model, valid_dataloader):
             acc_negative = (pred_neg.squeeze() < 0.5)
             acc_total += acc_positive.int().sum().item()
             acc_total += acc_negative.int().sum().item()
-            total_size += acc_positive.shape[0]
-            total_size += acc_negative.shape[0]
+            total_size += acc_positive.numel()
+            total_size += acc_negative.numel()
     model.train()
     return loss_total / len(valid_dataloader), acc_total / total_size
 
