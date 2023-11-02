@@ -36,7 +36,7 @@ print(DEVICE)
 
 R = 4
 K = 6
-batch_size = 256
+batch_size = 32
 n_epochs = 10
 
 """First cells will be the same than the ones of the lab on text convolution.
@@ -89,7 +89,7 @@ You should:
 
 """
 
-n_samples = 5000  # the number of training example
+n_samples = 500  # the number of training example
 
 # We first shuffle the data !
 dataset = dataset.shuffle()
@@ -302,7 +302,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
         )
     return list_train_loss, list_train_acc, list_val_loss, list_val_acc
 
-embedding_dimension = 150
+embedding_dimension = 32
 vocab_size = len(tokenizer.get_vocab())
 model = Word2Vec(vocab_size, embedding_dimension)
 model = model.to(DEVICE)
