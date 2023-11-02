@@ -37,7 +37,7 @@ print(DEVICE)
 R = 4
 K = 6
 batch_size = 64
-n_epochs = 10
+n_epochs = 1
 
 """First cells will be the same than the ones of the lab on text convolution.
 
@@ -89,7 +89,7 @@ You should:
 
 """
 
-n_samples = 5000  # the number of training example
+n_samples = 5 # the number of training example
 
 # We first shuffle the data !
 dataset = dataset.shuffle()
