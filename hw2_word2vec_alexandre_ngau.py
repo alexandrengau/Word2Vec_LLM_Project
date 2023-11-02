@@ -89,7 +89,7 @@ You should:
 
 """
 
-n_samples = 100  # the number of training example
+n_samples = 1000  # the number of training example
 
 # We first shuffle the data !
 dataset = dataset.shuffle()
