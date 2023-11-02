@@ -34,8 +34,8 @@ print(DEVICE)
 
 # Global variables
 
-R = 3
-K = 3
+R = 4
+K = 6
 batch_size = 64
 n_epochs = 10
 
@@ -305,7 +305,6 @@ def training(model, batch_size, n_epochs, lr=5e-5):
 embedding_dimension = 150
 vocab_size = len(tokenizer.get_vocab())
 model = Word2Vec(vocab_size, embedding_dimension)
-model = nn.DataParallel(model)
 
 training(model, batch_size, n_epochs, lr=5e-5)
 
