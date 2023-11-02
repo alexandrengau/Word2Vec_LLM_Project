@@ -116,7 +116,6 @@ def extract_words_contexts(list_of_ids_of_txt_doc, R=R):
   c_plus_ids = []
   for w in range(len(w_ids)) :
     c_plus = []
-    r = w-R
     for r in range(w-R, w+R+1):
       if r < 0 :
         c_plus.append(0)
@@ -224,7 +223,7 @@ def validation(model, valid_dataloader):
             pred_neg = model(word_id.unsqueeze(1), negative_context_ids)
             loss_positive = torch.mean(criterion(pred_pos, torch.ones(pred_pos.shape, device=DEVICE)), dim=1)
             loss_negative = torch.mean(criterion(pred_neg, torch.zeros(pred_neg.shape, device=DEVICE)), dim=1)
-            loss = loss_positive + loss_negative
+            loss = torch.mean(loss_positive + loss_negative)
             loss_total += loss
             acc_positive = (pred_pos > 0.5)
             acc_negative = (pred_neg < 0.5)
@@ -233,7 +232,7 @@ def validation(model, valid_dataloader):
     model.train()
     return loss_total / len(valid_dataloader), acc_total / total_size
 
-def training(model, batch_size, n_epochs, lr=5e-2):
+def training(model, batch_size, n_epochs, lr=5e-5):
     optimizer = torch.optim.AdamW(
         model.parameters(),
         lr=lr,
@@ -280,7 +279,7 @@ def training(model, batch_size, n_epochs, lr=5e-2):
             loss = torch.mean(loss_positive + loss_negative)
             loss.backward()
             optimizer.step()
-            train_loss += loss.detach().cpu().item()
+            train_loss += loss #.detach().cpu().item()
             acc_positive = (output_positive > 0.5)
             acc_negative = (output_negative < 0.5)
             epoch_train_acc += acc_positive.sum().item() + acc_negative.sum().item()
