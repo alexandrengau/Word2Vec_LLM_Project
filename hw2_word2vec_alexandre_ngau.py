@@ -89,7 +89,7 @@ You should:
 
 """
 
-n_samples = 500  # the number of training example
+n_samples = 5000  # the number of training example
 
 # We first shuffle the data !
 dataset = dataset.shuffle()
@@ -216,10 +216,10 @@ def validation(model, valid_dataloader):
     model = model.to(DEVICE)
     with torch.no_grad():
         for batch in tqdm(valid_dataloader):
-            batch = {k: v.to(DEVICE) for k, v in batch.items()}
-            word_id = batch["word_id"]
-            positive_context_ids = batch["positive_context_ids"]
-            negative_context_ids = batch["negative_context_ids"]
+            # batch = {k: v.to(DEVICE) for k, v in batch.items()}
+            word_id = batch["word_id"].to(DEVICE)
+            positive_context_ids = batch["positive_context_ids"].to(DEVICE)
+            negative_context_ids = batch["negative_context_ids"].to(DEVICE)
             pred_pos = model(word_id.unsqueeze(1), positive_context_ids)
             pred_neg = model(word_id.unsqueeze(1), negative_context_ids)
             loss_positive = torch.mean(criterion(pred_pos, torch.ones(pred_pos.shape, device=DEVICE)), dim=1)
@@ -264,11 +264,11 @@ def training(model, batch_size, n_epochs, lr=5e-5):
         epoch_train_acc = 0
         total_size = 0
         for batch in tqdm(train_dataloader):
-            batch = {k: v.to(DEVICE) for k, v in batch.items()}
+            # batch = {k: v.to(DEVICE) for k, v in batch.items()}
             word_id, positive_context_ids, negative_context_ids = (
-                batch["word_id"],
-                batch["positive_context_ids"],
-                batch["negative_context_ids"],
+                batch["word_id"].to(DEVICE),
+                batch["positive_context_ids"].to(DEVICE),
+                batch["negative_context_ids"].to(DEVICE),
             )
             optimizer.zero_grad()
             # Forward pass
