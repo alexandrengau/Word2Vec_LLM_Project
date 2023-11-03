@@ -162,7 +162,7 @@ class set(Dataset):
 train_set = set(flatten_document_train_set)
 valid_set = set(flatten_document_valid_set)
 
-vocab_list = list(tokenizer.get_vocab().values()) # this is why it was soooo inefficient ()
+vocab_list = list(tokenizer.get_vocab().values()) # this is why it was soooo inefficient (one epoch went from 32min to 30sec)
 
 def collate_fn(batch, R=R, K=K):
   dict = {}
