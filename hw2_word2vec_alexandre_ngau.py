@@ -37,7 +37,7 @@ print(DEVICE)
 R = 4
 K = 6
 batch_size = 64
-n_epochs = 10
+n_epochs = 25
 
 """First cells will be the same than the ones of the lab on text convolution.
 
