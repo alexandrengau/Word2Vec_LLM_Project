@@ -162,6 +162,7 @@ class set(Dataset):
 train_set = set(flatten_document_train_set)
 valid_set = set(flatten_document_valid_set)
 
+vocab_list = list(tokenizer.get_vocab().values()) # this is why it was soooo inefficient ()
 
 def collate_fn(batch, R=R, K=K):
   dict = {}
@@ -171,7 +172,7 @@ def collate_fn(batch, R=R, K=K):
   for i in range(len(batch)):
     word_id.append(batch[i][0])
     positive_context_ids.append(batch[i][1])
-    negative_context_ids.append(random.sample(list(tokenizer.get_vocab().values()), 2*K*R))
+    negative_context_ids.append(random.sample(vocab_list, 2*K*R))
   dict["word_id"] = torch.tensor(word_id)
   dict["positive_context_ids"] = torch.tensor(positive_context_ids)
   dict["negative_context_ids"] = torch.tensor(negative_context_ids)
