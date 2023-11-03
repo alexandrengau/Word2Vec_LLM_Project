@@ -314,92 +314,101 @@ def save_model(model, file_path, n_samples=n_samples, dimension=embedding_dimens
     torch.save(model.state_dict(), file_path + file_name)
 
 PATH = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/'
-
+"""
 # Training from 0 to 10 epochs
 print("STARTING THE TRAINING FROM 0 TO 10 EPOCHS")
 model = Word2Vec(vocab_size, embedding_dimension)
 model = model.to(DEVICE)
 training(model, batch_size, n_epochs)
 save_model(model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=n_epochs)
-
-# Continuing training from 10 to 20 epochs
-print("STARTING THE TRAINING FROM 10 TO 20 EPOCHS")
-saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-10.ckpt'
+"""
+# Continuing training from 100 to 110 epochs
+print("STARTING THE TRAINING FROM 100 TO 110 EPOCHS")
+saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-100.ckpt'
 pretrained_model = Word2Vec(vocab_size, embedding_dimension)
 pretrained_model.load_state_dict(torch.load(saved_model_path))
 pretrained_model = pretrained_model.to(DEVICE)
 training(pretrained_model, batch_size, n_epochs)
-save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=2*n_epochs)
+save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=11*n_epochs)
 
-# Continuing training from 20 to 30 epochs
-print("STARTING THE TRAINING FROM 20 TO 30 EPOCHS")
-saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-20.ckpt'
+# Continuing training from 110 to 120 epochs
+print("STARTING THE TRAINING FROM 110 TO 120 EPOCHS")
+saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-110.ckpt'
 pretrained_model = Word2Vec(vocab_size, embedding_dimension)
 pretrained_model.load_state_dict(torch.load(saved_model_path))
 pretrained_model = pretrained_model.to(DEVICE)
 training(pretrained_model, batch_size, n_epochs)
-save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=3*n_epochs)
+save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=12*n_epochs)
 
-# Continuing training from 30 to 40 epochs
-print("STARTING THE TRAINING FROM 30 TO 40 EPOCHS")
-saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-30.ckpt'
+# Continuing training from 120 to 130 epochs
+print("STARTING THE TRAINING FROM 120 TO 130 EPOCHS")
+saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-120.ckpt'
 pretrained_model = Word2Vec(vocab_size, embedding_dimension)
 pretrained_model.load_state_dict(torch.load(saved_model_path))
 pretrained_model = pretrained_model.to(DEVICE)
 training(pretrained_model, batch_size, n_epochs)
-save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=4*n_epochs)
+save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=13*n_epochs)
 
-# Continuing training from 40 to 50 epochs
-print("STARTING THE TRAINING FROM 40 TO 50 EPOCHS")
-saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-40.ckpt'
+# Continuing training from 130 to 140 epochs
+print("STARTING THE TRAINING FROM 130 TO 140 EPOCHS")
+saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-130.ckpt'
 pretrained_model = Word2Vec(vocab_size, embedding_dimension)
 pretrained_model.load_state_dict(torch.load(saved_model_path))
 pretrained_model = pretrained_model.to(DEVICE)
 training(pretrained_model, batch_size, n_epochs)
-save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=5*n_epochs)
+save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=14*n_epochs)
 
-# Continuing training from 50 to 60 epochs
-print("STARTING THE TRAINING FROM 50 TO 60 EPOCHS")
-saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-50.ckpt'
+# Continuing training from 140 to 150 epochs
+print("STARTING THE TRAINING FROM 140 TO 150 EPOCHS")
+saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-140.ckpt'
 pretrained_model = Word2Vec(vocab_size, embedding_dimension)
 pretrained_model.load_state_dict(torch.load(saved_model_path))
 pretrained_model = pretrained_model.to(DEVICE)
 training(pretrained_model, batch_size, n_epochs)
-save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=6*n_epochs)
+save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=15*n_epochs)
 
-# Continuing training from 60 to 70 epochs
-print("STARTING THE TRAINING FROM 60 TO 70 EPOCHS")
-saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-60.ckpt'
+# Continuing training from 150 to 160 epochs
+print("STARTING THE TRAINING FROM 150 TO 160 EPOCHS")
+saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-150.ckpt'
 pretrained_model = Word2Vec(vocab_size, embedding_dimension)
 pretrained_model.load_state_dict(torch.load(saved_model_path))
 pretrained_model = pretrained_model.to(DEVICE)
 training(pretrained_model, batch_size, n_epochs)
-save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=7*n_epochs)
+save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=16*n_epochs)
 
-# Continuing training from 70 to 80 epochs
-print("STARTING THE TRAINING FROM 70 TO 80 EPOCHS")
-saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-70.ckpt'
+# Continuing training from 160 to 170 epochs
+print("STARTING THE TRAINING FROM 160 TO 170 EPOCHS")
+saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-160.ckpt'
 pretrained_model = Word2Vec(vocab_size, embedding_dimension)
 pretrained_model.load_state_dict(torch.load(saved_model_path))
 pretrained_model = pretrained_model.to(DEVICE)
 training(pretrained_model, batch_size, n_epochs)
-save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=8*n_epochs)
+save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=17*n_epochs)
 
-# Continuing training from 80 to 90 epochs
-print("STARTING THE TRAINING FROM 80 TO 90 EPOCHS")
-saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-80.ckpt'
+# Continuing training from 170 to 180 epochs
+print("STARTING THE TRAINING FROM 170 TO 180 EPOCHS")
+saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-170.ckpt'
 pretrained_model = Word2Vec(vocab_size, embedding_dimension)
 pretrained_model.load_state_dict(torch.load(saved_model_path))
 pretrained_model = pretrained_model.to(DEVICE)
 training(pretrained_model, batch_size, n_epochs)
-save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=9*n_epochs)
+save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=18*n_epochs)
 
-# Continuing training from 90 to 100 epochs
-print("STARTING THE TRAINING FROM 90 TO 100 EPOCHS")
-saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-90.ckpt'
+# Continuing training from 180 to 190 epochs
+print("STARTING THE TRAINING FROM 180 TO 190 EPOCHS")
+saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-180.ckpt'
 pretrained_model = Word2Vec(vocab_size, embedding_dimension)
 pretrained_model.load_state_dict(torch.load(saved_model_path))
 pretrained_model = pretrained_model.to(DEVICE)
 training(pretrained_model, batch_size, n_epochs)
-save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=10*n_epochs)
+save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=19*n_epochs)
+
+# Continuing training from 190 to 200 epochs
+print("STARTING THE TRAINING FROM 190 TO 200 EPOCHS")
+saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-190.ckpt'
+pretrained_model = Word2Vec(vocab_size, embedding_dimension)
+pretrained_model.load_state_dict(torch.load(saved_model_path))
+pretrained_model = pretrained_model.to(DEVICE)
+training(pretrained_model, batch_size, n_epochs)
+save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=20*n_epochs)
 
