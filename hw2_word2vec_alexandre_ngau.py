@@ -306,7 +306,7 @@ def training(model, batch_size, n_epochs, lr=5e-5):
         )
     return list_train_loss, list_train_acc, list_val_loss, list_val_acc
 
-embedding_dimension = 100
+embedding_dimension = 200
 vocab_size = len(tokenizer.get_vocab())
 
 def save_model(model, file_path, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=n_epochs):
