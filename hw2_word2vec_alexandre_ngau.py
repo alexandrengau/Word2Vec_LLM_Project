@@ -37,7 +37,7 @@ print(DEVICE)
 R = 4
 K = 6
 batch_size = 64
-n_epochs = 10
+n_epochs = 100
 
 """First cells will be the same than the ones of the lab on text convolution.
 
@@ -306,22 +306,23 @@ def training(model, batch_size, n_epochs, lr=5e-5):
         )
     return list_train_loss, list_train_acc, list_val_loss, list_val_acc
 
-embedding_dimension = 150
+embedding_dimension = 100
 vocab_size = len(tokenizer.get_vocab())
 
-def save_model(model, file_path, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=n_epochs):
-    file_name = f"model_sample-{n_samples}_dim-{dimension}_radius-{radius}_ratio-{ratio}-batch-{batch}-epoch-{epoch}.ckpt"
+def save_model(model, file_path, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=n_epochs):
+    file_name = f"model_dim-{dimension}_radius-{radius}_ratio-{ratio}-batch-{batch}-epoch-{epoch}.ckpt"
     torch.save(model.state_dict(), file_path + file_name)
 
 PATH = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/'
 
 # Training from 0 to 10 epochs
-print("STARTING THE TRAINING FROM 0 TO 10 EPOCHS")
+print("STARTING THE TRAINING FROM 0 TO 100 EPOCHS")
 model = Word2Vec(vocab_size, embedding_dimension)
 model = model.to(DEVICE)
 training(model, batch_size, n_epochs)
-save_model(model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=n_epochs)
+save_model(model, file_path=PATH, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=n_epochs)
 
+"""
 # Continuing training from 10 to 20 epochs
 print("STARTING THE TRAINING FROM 10 TO 20 EPOCHS")
 saved_model_path = '/home/gpufs/users/students/iasd23/iasd23_angau/llm_hw2/model_data/model_sample-5000_dim-150_radius-4_ratio-6-batch-64-epoch-10.ckpt'
@@ -402,4 +403,4 @@ pretrained_model.load_state_dict(torch.load(saved_model_path))
 pretrained_model = pretrained_model.to(DEVICE)
 training(pretrained_model, batch_size, n_epochs)
 save_model(pretrained_model, file_path=PATH, n_samples=n_samples, dimension=embedding_dimension, radius=R, ratio=K, batch=batch_size, epoch=10*n_epochs)
-
+"""
