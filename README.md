@@ -4,8 +4,10 @@
 
 ### About this project
 
-This project is the second homework assignment for the LLM class of the IASD Master 2023/2024, at PSL Research University (Université PSL).
+This project is the second homework assignment for the LLM class of the IASD Master 2023/2024, at PSL Research University (Université PSL). The report can be viewed in the [LLM_HW_Word2Vec_Alexandre_NGAU.pdf](LLM_HW_Word2Vec_Alexandre_NGAU.pdf) file.
 It answers to the instructions given in the [hw2_word2vec_instructions.pdf](hw2_word2vec_instructions.pdf) file provided by the professors.
+
+---
 
 ### Acknowledgement
 
