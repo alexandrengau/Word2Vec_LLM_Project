@@ -12,11 +12,11 @@ It answers to the instructions given in the [hw2_word2vec_instructions.pdf](hw2_
 This project was made possible with the guidance and support of the following :
 
 - **Prof. Alexandre Allauzen**
-  - Professor at <u>ESPCI, PSL</u>
-  - Researcher in the <u>MILES Team</u> of the <u>LAMSADE, UMR 7243</u> at <u>Université Paris-Dauphine, PSL</u> and <u>Université PSL</u>
+  - Professor at *ESPCI, PSL*
+  - Researcher in the *MILES Team* of the *LAMSADE, UMR 7243* at *Université Paris-Dauphine, PSL* and *Université PSL*
 
 - **Florian Le Bronnec**
-  - PhD Student of the <u>LAMSADE, UMR 7243</u> at <u>Université Paris-Dauphine, PSL</u> and <u>Université PSL</u>
+  - PhD Student of the *LAMSADE, UMR 7243* at *Université Paris-Dauphine, PSL* and *Université PSL*
 
 ### License
 
